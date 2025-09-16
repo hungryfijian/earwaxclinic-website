@@ -6,7 +6,10 @@
       "Bash(git push:*)",
       "Bash(npm install:*)",
       "Bash(node:*)",
-      "Read(//d/EWC Map/**)"
+      "Read(//d/EWC Map/**)",
+      "Bash(lsof:*)",
+      "Bash(cat:*)",
+      "Bash(tasklist)"
     ],
     "deny": [],
     "ask": []

@@ -1,19 +1,17 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
+// Required for dynamic routes - returns empty array for now
+export function getStaticPaths() {
+  // Will be populated with city data later
+  return [];
+}
+
 const { city } = Astro.params;
-const pageTitle = `Ear Wax Removal Clinics in ${city} - Find Local Practitioners`;
-const pageDescription = `Find qualified ear wax removal practitioners in ${city}. Professional microsuction and irrigation services.`;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <main>
-    <h1>Ear Wax Removal Clinics in {city}</h1>
-    <p>Find qualified practitioners in your area offering professional ear wax removal services.</p>
-
-    <!-- This will be populated with clinic listings for the city -->
-    <div id="city-clinics">
-      <p>Loading clinics for {city}...</p>
-    </div>
-  </main>
+<BaseLayout title="City Clinics">
+  <h1>Clinics in {city}</h1>
+  <p>City listing page - will show all clinics in this city</p>
+  <p>This is a placeholder template for future city pages.</p>
 </BaseLayout>
