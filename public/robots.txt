@@ -1,0 +1,38 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.earwaxclinic.co.uk/sitemap.xml
+
+# Disallow admin areas and temporary files
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /temp/
+Disallow: /*.json$
+
+# Allow important pages
+Allow: /treatments/
+Allow: /earwax-clinic-locations/
+Allow: /about-ear-wax/
+Allow: /ear-wax-faq/
+Allow: /testimonials/
+Allow: /micro-suction-training/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = "Ear Wax Clinic Locations - Find Your Local Clinic";
+const pageDescription = "Directory of ear wax removal clinics across the UK and Ireland. Find your nearest qualified practitioner.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main>
+    <h1>Clinic Directory</h1>
+    <p>Browse ear wax removal clinics by location. Content will be dynamically generated.</p>
+
+    <!-- This will be populated with city listings -->
+    <div id="clinic-directory">
+      <p>Loading clinic locations...</p>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,373 @@
+---
+export interface PriceOption {
+  name: string;
+  price: string;
+  originalPrice?: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+  ctaText?: string;
+  ctaHref?: string;
+  badge?: string;
+}
+
+export interface Props {
+  title?: string;
+  options: PriceOption[];
+  variant?: 'default' | 'compact' | 'detailed';
+}
+
+const {
+  title = 'Our Services',
+  options,
+  variant = 'default'
+} = Astro.props;
+
+const tableClasses = `price-table price-table--${variant}`;
+---
+
+<div class={tableClasses}>
+  {title && <h2 class="price-table__title">{title}</h2>}
+
+  <div class="price-table__grid">
+    {options.map((option) => (
+      <div class={`price-option ${option.popular ? 'price-option--popular' : ''}`}>
+        {option.badge && (
+          <div class="price-option__badge">{option.badge}</div>
+        )}
+
+        <div class="price-option__header">
+          <h3 class="price-option__name">{option.name}</h3>
+
+          <div class="price-option__pricing">
+            <div class="price-option__price">{option.price}</div>
+            {option.originalPrice && (
+              <div class="price-option__original-price">{option.originalPrice}</div>
+            )}
+          </div>
+
+          <p class="price-option__description">{option.description}</p>
+        </div>
+
+        <div class="price-option__content">
+          <ul class="price-option__features">
+            {option.features.map((feature) => (
+              <li class="price-option__feature">
+                <span class="feature-icon">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          {option.ctaHref && (
+            <div class="price-option__cta">
+              <a
+                href={option.ctaHref}
+                class={`price-option__button ${option.popular ? 'price-option__button--popular' : ''}`}
+              >
+                {option.ctaText || 'Book Now'}
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .price-table {
+    width: 100%;
+    margin: var(--spacing-xl) 0;
+  }
+
+  .price-table__title {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+  }
+
+  .price-table__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Individual price option */
+  .price-option {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-option:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+  }
+
+  .price-option--popular {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+    z-index: 1;
+  }
+
+  .price-option--popular:hover {
+    transform: scale(1.05) translateY(-4px);
+  }
+
+  /* Badge for popular option */
+  .price-option__badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    z-index: 1;
+  }
+
+  /* Header section */
+  .price-option__header {
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .price-option--popular .price-option__header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+  }
+
+  .price-option__name {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+  }
+
+  .price-option--popular .price-option__name {
+    color: white;
+  }
+
+  .price-option__pricing {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .price-option__price {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+  }
+
+  .price-option--popular .price-option__price {
+    color: white;
+  }
+
+  .price-option__original-price {
+    font-size: var(--font-size-lg);
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-top: var(--spacing-xs);
+  }
+
+  .price-option--popular .price-option__original-price {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .price-option__description {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    margin: 0;
+  }
+
+  .price-option--popular .price-option__description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Content section */
+  .price-option__content {
+    padding: var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-option__features {
+    list-style: none;
+    margin: 0 0 var(--spacing-xl) 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .price-option__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-dark);
+  }
+
+  .feature-icon {
+    color: var(--accent-color);
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: var(--font-size-base);
+  }
+
+  /* CTA Button */
+  .price-option__cta {
+    margin-top: auto;
+  }
+
+  .price-option__button {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-align: center;
+    transition: all var(--transition-fast);
+    border: 2px solid var(--primary-color);
+  }
+
+  .price-option__button:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .price-option__button--popular {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+
+  .price-option__button--popular:hover {
+    background: #45a049;
+    border-color: #45a049;
+  }
+
+  /* Compact variant */
+  .price-table--compact .price-table__grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .price-table--compact .price-option__header {
+    padding: var(--spacing-md);
+  }
+
+  .price-table--compact .price-option__content {
+    padding: var(--spacing-md);
+  }
+
+  .price-table--compact .price-option__price {
+    font-size: var(--font-size-3xl);
+  }
+
+  /* Detailed variant */
+  .price-table--detailed .price-option__feature {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price-table--detailed .price-option__feature:last-child {
+    border-bottom: none;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .price-table__grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .price-option--popular {
+      transform: none;
+    }
+
+    .price-option--popular:hover {
+      transform: translateY(-4px);
+    }
+
+    .price-option__price {
+      font-size: var(--font-size-3xl);
+    }
+
+    .price-option__header {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .price-option__content {
+      padding: var(--spacing-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .price-table__title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .price-option__name {
+      font-size: var(--font-size-lg);
+    }
+
+    .price-option__price {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  /* Focus styles for accessibility */
+  .price-option__button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
+  /* Loading state */
+  .price-option__button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .price-option__button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>

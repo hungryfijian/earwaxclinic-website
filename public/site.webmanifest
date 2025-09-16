@@ -1,0 +1,63 @@
+{
+  "name": "Earwax Clinic Network - Professional Ear Wax Removal UK & Ireland",
+  "short_name": "Earwax Clinic",
+  "description": "The UK's leading network of qualified ear wax removal specialists. Over 150 clinics providing safe, professional microsuction and irrigation treatments.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00796B",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-GB",
+  "categories": ["health", "medical", "healthcare"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Find a Clinic",
+      "short_name": "Find Clinic",
+      "description": "Locate your nearest ear wax removal clinic",
+      "url": "/earwax-clinic-locations/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Book Online",
+      "short_name": "Book",
+      "description": "Book your ear wax removal appointment",
+      "url": "/earwax-clinic-locations/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "description": "Learn about our ear wax removal treatments",
+      "url": "/treatments/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ]
+}

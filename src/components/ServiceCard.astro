@@ -1,0 +1,281 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+  href?: string;
+  price?: string;
+  features?: string[];
+  image?: string;
+  alt?: string;
+  variant?: 'default' | 'featured' | 'compact';
+}
+
+const {
+  title,
+  description,
+  icon,
+  href,
+  price,
+  features = [],
+  image,
+  alt = title,
+  variant = 'default'
+} = Astro.props;
+
+const cardClasses = `service-card service-card--${variant}`;
+---
+
+<div class={cardClasses}>
+  {image && (
+    <div class="service-card__image">
+      <img src={image} alt={alt} loading="lazy" />
+    </div>
+  )}
+
+  <div class="service-card__content">
+    <div class="service-card__header">
+      {icon && <div class="service-card__icon">{icon}</div>}
+      <h3 class="service-card__title">{title}</h3>
+      {price && <div class="service-card__price">{price}</div>}
+    </div>
+
+    <p class="service-card__description">{description}</p>
+
+    {features.length > 0 && (
+      <ul class="service-card__features">
+        {features.map((feature) => (
+          <li class="service-card__feature">
+            <span class="feature-check">✓</span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {href && (
+      <div class="service-card__actions">
+        <a href={href} class="service-card__link">
+          Learn More
+          <span class="link-arrow">→</span>
+        </a>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .service-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+  }
+
+  /* Card variants */
+  .service-card--featured {
+    border: 2px solid var(--accent-color);
+    position: relative;
+  }
+
+  .service-card--featured::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: 1rem;
+    right: -0.5rem;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 1rem;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transform: rotate(3deg);
+    z-index: 1;
+  }
+
+  .service-card--compact {
+    padding: var(--spacing-md);
+  }
+
+  .service-card--compact .service-card__content {
+    padding: 0;
+  }
+
+  /* Image */
+  .service-card__image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+
+  .service-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+  }
+
+  .service-card:hover .service-card__image img {
+    transform: scale(1.05);
+  }
+
+  /* Content */
+  .service-card__content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .service-card__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-card__icon {
+    font-size: var(--font-size-2xl);
+    color: var(--primary-color);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .service-card__title {
+    color: var(--text-dark);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    line-height: var(--line-height-tight);
+  }
+
+  .service-card__price {
+    color: var(--accent-color);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .service-card__description {
+    color: var(--text-light);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+  }
+
+  /* Features */
+  .service-card__features {
+    list-style: none;
+    margin: 0 0 var(--spacing-lg) 0;
+    padding: 0;
+  }
+
+  .service-card__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--text-dark);
+  }
+
+  .feature-check {
+    color: var(--accent-color);
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* Actions */
+  .service-card__actions {
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+  }
+
+  .service-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-sm);
+  }
+
+  .service-card__link:hover {
+    color: var(--secondary-color);
+    gap: var(--spacing-sm);
+  }
+
+  .link-arrow {
+    transition: transform var(--transition-fast);
+    font-weight: 400;
+  }
+
+  .service-card__link:hover .link-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .service-card__content {
+      padding: var(--spacing-md);
+    }
+
+    .service-card__title {
+      font-size: var(--font-size-lg);
+    }
+
+    .service-card__header {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .service-card__price {
+      align-self: flex-start;
+      margin-top: var(--spacing-xs);
+    }
+
+    /* Compact variant on mobile */
+    .service-card--compact .service-card__content {
+      padding: var(--spacing-sm);
+    }
+  }
+
+  /* Focus styles for accessibility */
+  .service-card__link:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Dark mode support (if needed) */
+  @media (prefers-color-scheme: dark) {
+    .service-card {
+      background: #1a1a1a;
+      border-color: #333;
+      color: white;
+    }
+
+    .service-card__title {
+      color: white;
+    }
+
+    .service-card__description {
+      color: #ccc;
+    }
+  }
+</style>

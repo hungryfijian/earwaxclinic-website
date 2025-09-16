@@ -1,0 +1,600 @@
+{
+  "regions": {
+    "england": {
+      "name": "England",
+      "cities": {
+        "manchester": {
+          "name": "Manchester",
+          "slug": "manchester",
+          "county": "Greater Manchester",
+          "region": "North West England",
+          "coordinates": {
+            "lat": 53.4808,
+            "lng": -2.2426
+          },
+          "description": "Professional ear wax removal services across Manchester and surrounding areas.",
+          "clinics": [
+            {
+              "id": "manchester-city-centre",
+              "name": "Manchester City Centre Clinic",
+              "slug": "manchester-city-centre",
+              "address": {
+                "street": "123 Deansgate",
+                "city": "Manchester",
+                "postcode": "M3 2BW",
+                "county": "Greater Manchester"
+              },
+              "coordinates": {
+                "lat": 53.4794,
+                "lng": -2.2451
+              },
+              "contact": {
+                "phone": "0161 123 4567",
+                "email": "manchester@earwaxclinic.co.uk",
+                "website": "https://www.earwaxclinic.co.uk/clinics/manchester/manchester-city-centre"
+              },
+              "practitioner": {
+                "name": "Dr. Sarah Johnson",
+                "qualifications": ["HCPC Registered", "BSc Audiology", "MSc Clinical Audiology"],
+                "experience": "10+ years",
+                "bio": "Specializing in microsuction and hearing assessments with over a decade of clinical experience."
+              },
+              "services": [
+                {
+                  "name": "Microsuction",
+                  "price": "£85",
+                  "duration": "30 minutes",
+                  "description": "Safe, gentle ear wax removal using microscopic suction"
+                },
+                {
+                  "name": "Ear Irrigation",
+                  "price": "£65",
+                  "duration": "20 minutes",
+                  "description": "Water-based ear cleaning for suitable candidates"
+                },
+                {
+                  "name": "Hearing Assessment",
+                  "price": "£45",
+                  "duration": "45 minutes",
+                  "description": "Comprehensive hearing evaluation"
+                }
+              ],
+              "availability": {
+                "monday": { "open": "09:00", "close": "17:00" },
+                "tuesday": { "open": "09:00", "close": "17:00" },
+                "wednesday": { "open": "09:00", "close": "17:00" },
+                "thursday": { "open": "09:00", "close": "17:00" },
+                "friday": { "open": "09:00", "close": "17:00" },
+                "saturday": { "open": "09:00", "close": "13:00" },
+                "sunday": { "closed": true }
+              },
+              "features": [
+                "Free parking available",
+                "Wheelchair accessible",
+                "City centre location",
+                "Same-day appointments",
+                "COVID-19 safety measures"
+              ],
+              "images": {
+                "hero": "/images/clinic-images/manchester-city-centre-hero.jpg",
+                "gallery": [
+                  "/images/clinic-images/manchester-city-centre-1.jpg",
+                  "/images/clinic-images/manchester-city-centre-2.jpg"
+                ]
+              },
+              "testimonials": [
+                {
+                  "quote": "Excellent service from Dr. Johnson. Very professional and the microsuction was completely painless.",
+                  "author": "James M.",
+                  "rating": 5,
+                  "date": "2024-02-15"
+                }
+              ],
+              "bookingUrl": "https://booking.earwaxclinic.co.uk/manchester-city-centre",
+              "status": "active",
+              "featured": true
+            }
+          ]
+        },
+        "london": {
+          "name": "London",
+          "slug": "london",
+          "county": "Greater London",
+          "region": "London",
+          "coordinates": {
+            "lat": 51.5074,
+            "lng": -0.1278
+          },
+          "description": "Leading ear wax removal clinics across London with multiple convenient locations.",
+          "clinics": [
+            {
+              "id": "london-harley-street",
+              "name": "Harley Street Ear Clinic",
+              "slug": "harley-street",
+              "address": {
+                "street": "45 Harley Street",
+                "city": "London",
+                "postcode": "W1G 8QQ",
+                "county": "Greater London"
+              },
+              "coordinates": {
+                "lat": 51.5194,
+                "lng": -0.1448
+              },
+              "contact": {
+                "phone": "020 7123 4567",
+                "email": "harleystreet@earwaxclinic.co.uk",
+                "website": "https://www.earwaxclinic.co.uk/clinics/london/harley-street"
+              },
+              "practitioner": {
+                "name": "Mr. David Chen",
+                "qualifications": ["ENT Consultant", "FRCS", "GMC Registered"],
+                "experience": "15+ years",
+                "bio": "Consultant ENT surgeon with extensive experience in ear health and hearing restoration."
+              },
+              "services": [
+                {
+                  "name": "Microsuction",
+                  "price": "£95",
+                  "duration": "30 minutes",
+                  "description": "Premium microsuction service in prestigious Harley Street location"
+                },
+                {
+                  "name": "Comprehensive Ear Examination",
+                  "price": "£150",
+                  "duration": "60 minutes",
+                  "description": "Full ENT consultation with detailed ear assessment"
+                },
+                {
+                  "name": "Hearing Test & Report",
+                  "price": "£85",
+                  "duration": "45 minutes",
+                  "description": "Professional audiometry with detailed written report"
+                }
+              ],
+              "availability": {
+                "monday": { "open": "08:00", "close": "18:00" },
+                "tuesday": { "open": "08:00", "close": "18:00" },
+                "wednesday": { "open": "08:00", "close": "18:00" },
+                "thursday": { "open": "08:00", "close": "18:00" },
+                "friday": { "open": "08:00", "close": "18:00" },
+                "saturday": { "open": "09:00", "close": "15:00" },
+                "sunday": { "closed": true }
+              },
+              "features": [
+                "Prestigious Harley Street location",
+                "Consultant-led service",
+                "Private consultation rooms",
+                "Advanced diagnostic equipment",
+                "Same-day results",
+                "Concierge service available"
+              ],
+              "images": {
+                "hero": "/images/clinic-images/london-harley-street-hero.jpg",
+                "gallery": [
+                  "/images/clinic-images/london-harley-street-1.jpg",
+                  "/images/clinic-images/london-harley-street-2.jpg",
+                  "/images/clinic-images/london-harley-street-3.jpg"
+                ]
+              },
+              "testimonials": [
+                {
+                  "quote": "Outstanding service from Mr. Chen. The Harley Street clinic is immaculate and the treatment was first-class.",
+                  "author": "Elizabeth R.",
+                  "rating": 5,
+                  "date": "2024-03-01"
+                },
+                {
+                  "quote": "Highly professional team and excellent facilities. Worth every penny for the quality of care.",
+                  "author": "Michael T.",
+                  "rating": 5,
+                  "date": "2024-02-28"
+                }
+              ],
+              "bookingUrl": "https://booking.earwaxclinic.co.uk/london-harley-street",
+              "status": "active",
+              "featured": true
+            },
+            {
+              "id": "london-canary-wharf",
+              "name": "Canary Wharf Clinic",
+              "slug": "canary-wharf",
+              "address": {
+                "street": "25 Canada Square",
+                "city": "London",
+                "postcode": "E14 5LQ",
+                "county": "Greater London"
+              },
+              "coordinates": {
+                "lat": 51.5045,
+                "lng": -0.0195
+              },
+              "contact": {
+                "phone": "020 7456 7890",
+                "email": "canarywharf@earwaxclinic.co.uk",
+                "website": "https://www.earwaxclinic.co.uk/clinics/london/canary-wharf"
+              },
+              "practitioner": {
+                "name": "Dr. Amanda Wilson",
+                "qualifications": ["HCPC Registered", "AuD", "BSc Audiology"],
+                "experience": "8+ years",
+                "bio": "Audiologist specializing in occupational hearing health for business professionals."
+              },
+              "services": [
+                {
+                  "name": "Express Microsuction",
+                  "price": "£75",
+                  "duration": "20 minutes",
+                  "description": "Quick and efficient service for busy professionals"
+                },
+                {
+                  "name": "Executive Hearing Check",
+                  "price": "£65",
+                  "duration": "30 minutes",
+                  "description": "Comprehensive hearing assessment for business executives"
+                }
+              ],
+              "availability": {
+                "monday": { "open": "07:00", "close": "19:00" },
+                "tuesday": { "open": "07:00", "close": "19:00" },
+                "wednesday": { "open": "07:00", "close": "19:00" },
+                "thursday": { "open": "07:00", "close": "19:00" },
+                "friday": { "open": "07:00", "close": "19:00" },
+                "saturday": { "open": "08:00", "close": "14:00" },
+                "sunday": { "closed": true }
+              },
+              "features": [
+                "Early morning appointments",
+                "Business district location",
+                "Express services available",
+                "Corporate packages",
+                "Near DLR and tube stations"
+              ],
+              "images": {
+                "hero": "/images/clinic-images/london-canary-wharf-hero.jpg",
+                "gallery": [
+                  "/images/clinic-images/london-canary-wharf-1.jpg",
+                  "/images/clinic-images/london-canary-wharf-2.jpg"
+                ]
+              },
+              "testimonials": [
+                {
+                  "quote": "Perfect for busy schedules. Dr. Wilson was efficient and professional. Highly recommend.",
+                  "author": "Robert K.",
+                  "rating": 5,
+                  "date": "2024-03-05"
+                }
+              ],
+              "bookingUrl": "https://booking.earwaxclinic.co.uk/london-canary-wharf",
+              "status": "active",
+              "featured": false
+            }
+          ]
+        },
+        "birmingham": {
+          "name": "Birmingham",
+          "slug": "birmingham",
+          "county": "West Midlands",
+          "region": "West Midlands",
+          "coordinates": {
+            "lat": 52.4862,
+            "lng": -1.8904
+          },
+          "description": "Quality ear care services in Birmingham and surrounding West Midlands areas.",
+          "clinics": [
+            {
+              "id": "birmingham-jewellery-quarter",
+              "name": "Jewellery Quarter Hearing Centre",
+              "slug": "jewellery-quarter",
+              "address": {
+                "street": "78 Vyse Street",
+                "city": "Birmingham",
+                "postcode": "B18 6HA",
+                "county": "West Midlands"
+              },
+              "coordinates": {
+                "lat": 52.4887,
+                "lng": -1.9026
+              },
+              "contact": {
+                "phone": "0121 234 5678",
+                "email": "birmingham@earwaxclinic.co.uk",
+                "website": "https://www.earwaxclinic.co.uk/clinics/birmingham/jewellery-quarter"
+              },
+              "practitioner": {
+                "name": "Ms. Rachel Patel",
+                "qualifications": ["RCCP Registered", "MSc Audiology", "BSHAA Member"],
+                "experience": "12+ years",
+                "bio": "Experienced audiologist with special interest in pediatric and adult ear health."
+              },
+              "services": [
+                {
+                  "name": "Microsuction",
+                  "price": "£80",
+                  "duration": "30 minutes",
+                  "description": "Gentle ear wax removal using latest microsuction technology"
+                },
+                {
+                  "name": "Ear Health Check",
+                  "price": "£40",
+                  "duration": "20 minutes",
+                  "description": "Thorough examination of ear health and hygiene"
+                }
+              ],
+              "availability": {
+                "monday": { "open": "09:00", "close": "17:30" },
+                "tuesday": { "open": "09:00", "close": "17:30" },
+                "wednesday": { "open": "09:00", "close": "17:30" },
+                "thursday": { "open": "09:00", "close": "17:30" },
+                "friday": { "open": "09:00", "close": "17:30" },
+                "saturday": { "open": "09:00", "close": "13:00" },
+                "sunday": { "closed": true }
+              },
+              "features": [
+                "Historic Jewellery Quarter location",
+                "Family-friendly service",
+                "Free parking nearby",
+                "Children welcome",
+                "Multilingual support"
+              ],
+              "images": {
+                "hero": "/images/clinic-images/birmingham-jewellery-quarter-hero.jpg",
+                "gallery": [
+                  "/images/clinic-images/birmingham-jewellery-quarter-1.jpg"
+                ]
+              },
+              "testimonials": [
+                {
+                  "quote": "Ms. Patel was wonderful with my elderly mother. Very patient and caring approach.",
+                  "author": "Susan D.",
+                  "rating": 5,
+                  "date": "2024-02-20"
+                }
+              ],
+              "bookingUrl": "https://booking.earwaxclinic.co.uk/birmingham-jewellery-quarter",
+              "status": "active",
+              "featured": false
+            }
+          ]
+        }
+      }
+    },
+    "scotland": {
+      "name": "Scotland",
+      "cities": {
+        "glasgow": {
+          "name": "Glasgow",
+          "slug": "glasgow",
+          "county": "Glasgow City",
+          "region": "Scotland",
+          "coordinates": {
+            "lat": 55.8642,
+            "lng": -4.2518
+          },
+          "description": "Professional ear wax removal services across Glasgow and central Scotland.",
+          "clinics": [
+            {
+              "id": "glasgow-merchant-city",
+              "name": "Merchant City Audiology",
+              "slug": "merchant-city",
+              "address": {
+                "street": "15 Ingram Street",
+                "city": "Glasgow",
+                "postcode": "G1 1EJ",
+                "county": "Glasgow City"
+              },
+              "coordinates": {
+                "lat": 55.8580,
+                "lng": -4.2429
+              },
+              "contact": {
+                "phone": "0141 234 5678",
+                "email": "glasgow@earwaxclinic.co.uk",
+                "website": "https://www.earwaxclinic.co.uk/clinics/glasgow/merchant-city"
+              },
+              "practitioner": {
+                "name": "Dr. Ian MacLeod",
+                "qualifications": ["HCPC Registered", "PhD Audiology", "BAA Member"],
+                "experience": "18+ years",
+                "bio": "Leading Scottish audiologist with expertise in complex ear conditions and hearing rehabilitation."
+              },
+              "services": [
+                {
+                  "name": "Microsuction",
+                  "price": "£75",
+                  "duration": "30 minutes",
+                  "description": "Expert ear wax removal in Glasgow's cultural quarter"
+                },
+                {
+                  "name": "Tinnitus Consultation",
+                  "price": "£95",
+                  "duration": "60 minutes",
+                  "description": "Comprehensive tinnitus assessment and management advice"
+                }
+              ],
+              "availability": {
+                "monday": { "open": "08:30", "close": "17:00" },
+                "tuesday": { "open": "08:30", "close": "17:00" },
+                "wednesday": { "open": "08:30", "close": "17:00" },
+                "thursday": { "open": "08:30", "close": "17:00" },
+                "friday": { "open": "08:30", "close": "17:00" },
+                "saturday": { "open": "09:00", "close": "13:00" },
+                "sunday": { "closed": true }
+              },
+              "features": [
+                "Central Glasgow location",
+                "Tinnitus specialists",
+                "University partnerships",
+                "Research-led practice",
+                "Transport links nearby"
+              ],
+              "images": {
+                "hero": "/images/clinic-images/glasgow-merchant-city-hero.jpg",
+                "gallery": [
+                  "/images/clinic-images/glasgow-merchant-city-1.jpg",
+                  "/images/clinic-images/glasgow-merchant-city-2.jpg"
+                ]
+              },
+              "testimonials": [
+                {
+                  "quote": "Dr. MacLeod helped me with chronic tinnitus when no one else could. Outstanding expertise.",
+                  "author": "Margaret S.",
+                  "rating": 5,
+                  "date": "2024-03-10"
+                }
+              ],
+              "bookingUrl": "https://booking.earwaxclinic.co.uk/glasgow-merchant-city",
+              "status": "active",
+              "featured": true
+            }
+          ]
+        }
+      }
+    },
+    "ireland": {
+      "name": "Ireland",
+      "cities": {
+        "dublin": {
+          "name": "Dublin",
+          "slug": "dublin",
+          "county": "Dublin",
+          "region": "Ireland",
+          "coordinates": {
+            "lat": 53.3498,
+            "lng": -6.2603
+          },
+          "description": "Professional ear care services in Dublin and across Ireland.",
+          "clinics": [
+            {
+              "id": "dublin-city-centre",
+              "name": "Dublin Hearing Centre",
+              "slug": "dublin-city-centre",
+              "address": {
+                "street": "32 Grafton Street",
+                "city": "Dublin",
+                "postcode": "D02 Y431",
+                "county": "Dublin"
+              },
+              "coordinates": {
+                "lat": 53.3415,
+                "lng": -6.2601
+              },
+              "contact": {
+                "phone": "+353 1 234 5678",
+                "email": "dublin@earwaxclinic.co.uk",
+                "website": "https://www.earwaxclinic.co.uk/clinics/dublin/city-centre"
+              },
+              "practitioner": {
+                "name": "Dr. Siobhan O'Brien",
+                "qualifications": ["HIQA Registered", "MSc Clinical Audiology", "ISHAA Member"],
+                "experience": "14+ years",
+                "bio": "Leading Irish audiologist specializing in comprehensive ear health and hearing conservation."
+              },
+              "services": [
+                {
+                  "name": "Microsuction",
+                  "price": "€85",
+                  "duration": "30 minutes",
+                  "description": "Professional ear wax removal in Dublin city centre"
+                },
+                {
+                  "name": "Hearing Assessment",
+                  "price": "€65",
+                  "duration": "45 minutes",
+                  "description": "Complete hearing evaluation with detailed report"
+                }
+              ],
+              "availability": {
+                "monday": { "open": "09:00", "close": "18:00" },
+                "tuesday": { "open": "09:00", "close": "18:00" },
+                "wednesday": { "open": "09:00", "close": "18:00" },
+                "thursday": { "open": "09:00", "close": "18:00" },
+                "friday": { "open": "09:00", "close": "18:00" },
+                "saturday": { "open": "10:00", "close": "14:00" },
+                "sunday": { "closed": true }
+              },
+              "features": [
+                "Grafton Street location",
+                "Multi-lingual service",
+                "Irish healthcare standards",
+                "City centre accessibility",
+                "Tourist-friendly"
+              ],
+              "images": {
+                "hero": "/images/clinic-images/dublin-city-centre-hero.jpg",
+                "gallery": [
+                  "/images/clinic-images/dublin-city-centre-1.jpg"
+                ]
+              },
+              "testimonials": [
+                {
+                  "quote": "Dr. O'Brien provided excellent care during my visit to Dublin. Highly professional service.",
+                  "author": "Patrick M.",
+                  "rating": 5,
+                  "date": "2024-03-08"
+                }
+              ],
+              "bookingUrl": "https://booking.earwaxclinic.co.uk/dublin-city-centre",
+              "status": "active",
+              "featured": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "serviceTypes": {
+    "microsuction": {
+      "name": "Microsuction",
+      "description": "Safe, precise ear wax removal using gentle suction under microscopic guidance",
+      "duration": "20-30 minutes",
+      "priceRange": "£65-£95",
+      "suitableFor": ["All ages", "Hearing aid users", "Perforated eardrums", "Previous ear surgery"],
+      "benefits": [
+        "No water used",
+        "Immediate results",
+        "Comfortable procedure",
+        "Safe for sensitive ears"
+      ]
+    },
+    "irrigation": {
+      "name": "Ear Irrigation",
+      "description": "Gentle water-based ear cleaning for suitable candidates",
+      "duration": "15-20 minutes",
+      "priceRange": "£45-£65",
+      "suitableFor": ["Healthy eardrums", "No previous ear problems", "Soft wax buildup"],
+      "benefits": [
+        "Cost-effective",
+        "Quick procedure",
+        "Well-established method",
+        "Suitable for routine cleaning"
+      ]
+    },
+    "hearing-assessment": {
+      "name": "Hearing Assessment",
+      "description": "Comprehensive evaluation of hearing health and function",
+      "duration": "30-60 minutes",
+      "priceRange": "£40-£150",
+      "suitableFor": ["All ages", "Hearing concerns", "Regular check-ups", "Occupational requirements"],
+      "benefits": [
+        "Early detection of hearing loss",
+        "Professional audiometry",
+        "Detailed written report",
+        "Treatment recommendations"
+      ]
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2024-03-15",
+    "version": "1.0",
+    "totalClinics": 6,
+    "totalCities": 5,
+    "totalRegions": 3,
+    "averageRating": 5.0,
+    "priceRange": {
+      "min": 40,
+      "max": 150,
+      "currency": ["GBP", "EUR"]
+    }
+  }
+}

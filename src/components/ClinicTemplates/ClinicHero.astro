@@ -1,0 +1,550 @@
+---
+export interface Props {
+  clinic: {
+    name: string;
+    address: {
+      street: string;
+      city: string;
+      postcode: string;
+      county: string;
+    };
+    practitioner: {
+      name: string;
+      qualifications: string[];
+      experience: string;
+      bio: string;
+    };
+    contact: {
+      phone: string;
+      email: string;
+    };
+    images?: {
+      hero?: string;
+    };
+    features: string[];
+    bookingUrl?: string;
+  };
+  showBookingCta?: boolean;
+}
+
+const { clinic, showBookingCta = true } = Astro.props;
+const heroImage = clinic.images?.hero || '/images/fallback-images/clinic-hero-default.jpg';
+---
+
+<section class="clinic-hero">
+  <div class="clinic-hero__background">
+    <img
+      src={heroImage}
+      alt={`${clinic.name} - Professional ear wax removal clinic`}
+      class="hero-image"
+      loading="eager"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="clinic-hero__content">
+    <div class="container">
+      <div class="hero-content-grid">
+        <div class="hero-main">
+          <div class="clinic-info">
+            <h1 class="clinic-name">{clinic.name}</h1>
+
+            <div class="clinic-location">
+              <span class="location-icon">📍</span>
+              <address class="clinic-address">
+                {clinic.address.street}<br />
+                {clinic.address.city}, {clinic.address.postcode}<br />
+                {clinic.address.county}
+              </address>
+            </div>
+
+            <div class="practitioner-highlight">
+              <h2 class="practitioner-name">{clinic.practitioner.name}</h2>
+              <p class="practitioner-experience">{clinic.practitioner.experience} Experience</p>
+              <div class="practitioner-qualifications">
+                {clinic.practitioner.qualifications.map((qualification) => (
+                  <span class="qualification-badge">{qualification}</span>
+                ))}
+              </div>
+            </div>
+
+            <p class="practitioner-bio">{clinic.practitioner.bio}</p>
+          </div>
+
+          <div class="clinic-features">
+            <h3 class="features-title">Why Choose Us</h3>
+            <ul class="features-list">
+              {clinic.features.map((feature) => (
+                <li class="feature-item">
+                  <span class="feature-check">✓</span>
+                  <span class="feature-text">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-sidebar">
+          <div class="contact-card">
+            <h3 class="contact-title">Book Your Appointment</h3>
+
+            <div class="contact-methods">
+              <div class="contact-method contact-method--primary">
+                <span class="contact-icon">📞</span>
+                <div class="contact-details">
+                  <span class="contact-label">Call Now</span>
+                  <a href={`tel:${clinic.contact.phone}`} class="contact-value phone-link">
+                    {clinic.contact.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <span class="contact-icon">✉️</span>
+                <div class="contact-details">
+                  <span class="contact-label">Email</span>
+                  <a href={`mailto:${clinic.contact.email}`} class="contact-value email-link">
+                    {clinic.contact.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {showBookingCta && clinic.bookingUrl && (
+              <div class="booking-cta">
+                <a
+                  href={clinic.bookingUrl}
+                  class="btn-book-appointment"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book Online Now
+                  <span class="btn-icon">→</span>
+                </a>
+                <p class="booking-note">Quick & easy online booking</p>
+              </div>
+            )}
+
+            <div class="emergency-hours">
+              <h4 class="emergency-title">Opening Hours</h4>
+              <p class="emergency-text">
+                Monday - Friday: 9:00 AM - 5:00 PM<br />
+                Saturday: 9:00 AM - 1:00 PM<br />
+                Sunday: Closed
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .clinic-hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .clinic-hero__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 121, 107, 0.85) 0%,
+      rgba(0, 77, 64, 0.75) 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    z-index: -1;
+  }
+
+  .clinic-hero__content {
+    position: relative;
+    width: 100%;
+    padding: var(--spacing-3xl) 0;
+    z-index: 1;
+  }
+
+  .hero-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--spacing-3xl);
+    align-items: start;
+  }
+
+  .hero-main {
+    color: white;
+  }
+
+  .clinic-info {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .clinic-name {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    margin-bottom: var(--spacing-lg);
+    line-height: var(--line-height-tight);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .clinic-location {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .location-icon {
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .clinic-address {
+    font-style: normal;
+    line-height: var(--line-height-normal);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .practitioner-highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    backdrop-filter: blur(10px);
+  }
+
+  .practitioner-name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: white;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .practitioner-experience {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .practitioner-qualifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .qualification-badge {
+    background: rgba(76, 175, 80, 0.2);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+  }
+
+  .practitioner-bio {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
+  }
+
+  .clinic-features {
+    background: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+  }
+
+  .features-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: white;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .feature-check {
+    color: var(--accent-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    flex-shrink: 0;
+  }
+
+  .feature-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Sidebar contact card */
+  .hero-sidebar {
+    position: sticky;
+    top: var(--spacing-xl);
+  }
+
+  .contact-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--spacing-xl);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+
+  .contact-method--primary {
+    background: var(--background-light);
+  }
+
+  .contact-method:hover {
+    background: var(--background-light);
+  }
+
+  .contact-icon {
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.05em;
+  }
+
+  .contact-value {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .phone-link {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .phone-link:hover {
+    color: var(--secondary-color);
+  }
+
+  .email-link {
+    color: var(--text-dark);
+  }
+
+  .email-link:hover {
+    color: var(--primary-color);
+  }
+
+  .booking-cta {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #45a049 100%);
+    border-radius: var(--radius-lg);
+  }
+
+  .btn-book-appointment {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: white;
+    color: var(--accent-color);
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-book-appointment:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-icon {
+    font-weight: normal;
+    transition: transform var(--transition-fast);
+  }
+
+  .btn-book-appointment:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  .booking-note {
+    color: white;
+    font-size: var(--font-size-xs);
+    margin: var(--spacing-sm) 0 0 0;
+    opacity: 0.9;
+  }
+
+  .emergency-hours {
+    border-top: 1px solid var(--border-light);
+    padding-top: var(--spacing-lg);
+  }
+
+  .emergency-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .emergency-text {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    margin: 0;
+  }
+
+  /* Responsive design */
+  @media (max-width: 1024px) {
+    .hero-content-grid {
+      grid-template-columns: 1fr 350px;
+      gap: var(--spacing-2xl);
+    }
+
+    .contact-card {
+      padding: var(--spacing-lg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .clinic-hero {
+      min-height: auto;
+    }
+
+    .clinic-hero__content {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .hero-content-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    .clinic-name {
+      font-size: var(--font-size-3xl);
+    }
+
+    .practitioner-highlight {
+      padding: var(--spacing-md);
+    }
+
+    .practitioner-qualifications {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .qualification-badge {
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .clinic-hero__content {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .clinic-name {
+      font-size: var(--font-size-2xl);
+    }
+
+    .practitioner-bio {
+      font-size: var(--font-size-base);
+    }
+
+    .contact-card {
+      padding: var(--spacing-md);
+    }
+
+    .contact-method {
+      padding: var(--spacing-sm);
+    }
+
+    .booking-cta {
+      padding: var(--spacing-md);
+    }
+  }
+
+  /* Focus styles for accessibility */
+  .phone-link:focus,
+  .email-link:focus,
+  .btn-book-appointment:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+</style>

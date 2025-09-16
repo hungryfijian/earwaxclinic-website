@@ -1,0 +1,499 @@
+---
+export interface Props {
+  clinic: {
+    id: string;
+    name: string;
+    slug: string;
+    address: {
+      street: string;
+      city: string;
+      postcode: string;
+      county: string;
+    };
+    contact: {
+      phone: string;
+      email: string;
+    };
+    practitioner: {
+      name: string;
+      qualifications: string[];
+      experience: string;
+    };
+    services: Array<{
+      name: string;
+      price: string;
+      duration: string;
+    }>;
+    features: string[];
+    featured?: boolean;
+    bookingUrl?: string;
+  };
+  city: string;
+  showDistance?: boolean;
+  distance?: string;
+}
+
+const { clinic, city, showDistance = false, distance } = Astro.props;
+const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
+---
+
+<div class={`clinic-card ${clinic.featured ? 'clinic-card--featured' : ''}`}>
+  {clinic.featured && (
+    <div class="clinic-card__badge">
+      <span>Recommended</span>
+    </div>
+  )}
+
+  <div class="clinic-card__header">
+    <div class="clinic-card__title-section">
+      <h3 class="clinic-card__name">
+        <a href={clinicUrl} class="clinic-card__name-link">
+          {clinic.name}
+        </a>
+      </h3>
+
+      <div class="clinic-card__location">
+        <span class="location-icon">📍</span>
+        <span class="clinic-card__address">
+          {clinic.address.street}, {clinic.address.city} {clinic.address.postcode}
+        </span>
+      </div>
+
+      {showDistance && distance && (
+        <div class="clinic-card__distance">
+          <span class="distance-icon">📏</span>
+          <span>{distance}</span>
+        </div>
+      )}
+    </div>
+
+    <div class="clinic-card__contact-quick">
+      <a
+        href={`tel:${clinic.contact.phone}`}
+        class="clinic-card__phone-quick"
+        title={`Call ${clinic.name}`}
+      >
+        📞
+      </a>
+    </div>
+  </div>
+
+  <div class="clinic-card__content">
+    <div class="clinic-card__practitioner">
+      <h4 class="practitioner-name">{clinic.practitioner.name}</h4>
+      <p class="practitioner-experience">{clinic.practitioner.experience} experience</p>
+      <div class="practitioner-qualifications">
+        {clinic.practitioner.qualifications.slice(0, 2).map((qual) => (
+          <span class="qualification-badge">{qual}</span>
+        ))}
+        {clinic.practitioner.qualifications.length > 2 && (
+          <span class="qualification-more">+{clinic.practitioner.qualifications.length - 2} more</span>
+        )}
+      </div>
+    </div>
+
+    <div class="clinic-card__services">
+      <h5 class="services-title">Services Available</h5>
+      <ul class="services-list">
+        {clinic.services.slice(0, 3).map((service) => (
+          <li class="service-item">
+            <span class="service-name">{service.name}</span>
+            <span class="service-price">{service.price}</span>
+          </li>
+        ))}
+        {clinic.services.length > 3 && (
+          <li class="service-item service-more">
+            <span>+ {clinic.services.length - 3} more services</span>
+          </li>
+        )}
+      </ul>
+    </div>
+
+    <div class="clinic-card__features">
+      <ul class="features-list">
+        {clinic.features.slice(0, 3).map((feature) => (
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="clinic-card__actions">
+    <div class="clinic-card__contact">
+      <a
+        href={`tel:${clinic.contact.phone}`}
+        class="contact-phone"
+        title={`Call ${clinic.name}`}
+      >
+        {clinic.contact.phone}
+      </a>
+    </div>
+
+    <div class="clinic-card__cta">
+      {clinic.bookingUrl ? (
+        <a
+          href={clinic.bookingUrl}
+          class="btn-book-online"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book Online
+        </a>
+      ) : (
+        <a href={clinicUrl} class="btn-view-details">
+          View Details
+        </a>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .clinic-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .clinic-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+  }
+
+  .clinic-card--featured {
+    border: 2px solid var(--accent-color);
+    box-shadow: var(--shadow-md);
+  }
+
+  .clinic-card__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-color);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border-radius: 0 var(--radius-lg) 0 var(--radius-md);
+    z-index: 1;
+  }
+
+  .clinic-card__header {
+    padding: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .clinic-card__title-section {
+    flex: 1;
+  }
+
+  .clinic-card__name {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-tight);
+  }
+
+  .clinic-card__name-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .clinic-card__name-link:hover {
+    color: var(--primary-color);
+  }
+
+  .clinic-card__location {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .location-icon,
+  .distance-icon {
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+  }
+
+  .clinic-card__address {
+    line-height: var(--line-height-tight);
+  }
+
+  .clinic-card__distance {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .clinic-card__contact-quick {
+    flex-shrink: 0;
+  }
+
+  .clinic-card__phone-quick {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    transition: all var(--transition-fast);
+  }
+
+  .clinic-card__phone-quick:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+  }
+
+  .clinic-card__content {
+    padding: var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .clinic-card__practitioner {
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .practitioner-name {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--secondary-color);
+  }
+
+  .practitioner-experience {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+  }
+
+  .practitioner-qualifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .qualification-badge {
+    background: var(--background-light);
+    color: var(--text-dark);
+    padding: 2px var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .qualification-more {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    font-style: italic;
+  }
+
+  .clinic-card__services {
+    flex: 1;
+  }
+
+  .services-title {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .services-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+  }
+
+  .service-name {
+    color: var(--text-dark);
+  }
+
+  .service-price {
+    color: var(--accent-color);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .service-more {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .clinic-card__features {
+    margin-top: auto;
+  }
+
+  .features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-light);
+  }
+
+  .feature-check {
+    color: var(--accent-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+  }
+
+  .clinic-card__actions {
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .clinic-card__contact {
+    flex: 1;
+  }
+
+  .contact-phone {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-phone:hover {
+    color: var(--secondary-color);
+  }
+
+  .clinic-card__cta {
+    flex-shrink: 0;
+  }
+
+  .btn-book-online,
+  .btn-view-details {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-fast);
+    display: inline-block;
+  }
+
+  .btn-book-online:hover,
+  .btn-view-details:hover {
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-book-online {
+    background: var(--accent-color);
+  }
+
+  .btn-book-online:hover {
+    background: #45a049;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .clinic-card__header {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      align-items: stretch;
+    }
+
+    .clinic-card__contact-quick {
+      align-self: flex-end;
+    }
+
+    .clinic-card__actions {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      align-items: stretch;
+    }
+
+    .btn-book-online,
+    .btn-view-details {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .clinic-card__header,
+    .clinic-card__content,
+    .clinic-card__actions {
+      padding: var(--spacing-md);
+    }
+
+    .practitioner-qualifications {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .qualification-badge {
+      align-self: flex-start;
+    }
+  }
+
+  /* Focus styles for accessibility */
+  .clinic-card__name-link:focus,
+  .clinic-card__phone-quick:focus,
+  .contact-phone:focus,
+  .btn-book-online:focus,
+  .btn-view-details:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+</style>

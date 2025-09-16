@@ -1,72 +1,403 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
 export interface Props {
   title: string;
   description: string;
+  image?: string;
+  canonical?: string;
+  type?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image, canonical, type = 'website' } = Astro.props;
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const socialImage = image || '/images/og-default.jpg';
 ---
 
 <!DOCTYPE html>
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
 
-    <!-- Your existing analytics, fonts, etc. will go here -->
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:site_name" content="Earwax Clinic Network" />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImage} />
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Earwax Clinic Network" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
 
     <style>
-      /* Global styles - matching your brand colors */
+      /* CSS Reset and Base Styles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* CSS Custom Properties */
       :root {
+        /* Brand Colors */
         --primary-color: #00796B;
         --secondary-color: #004D40;
         --accent-color: #4CAF50;
         --warning-color: #FF6B35;
         --text-dark: #212121;
         --text-light: #757575;
+        --text-muted: #9E9E9E;
+        --background: #FFFFFF;
+        --background-light: #F5F5F5;
+        --border: #E0E0E0;
+        --shadow: rgba(0, 0, 0, 0.1);
+
+        /* Typography */
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 1.875rem;
+        --font-size-4xl: 2.25rem;
+        --line-height-tight: 1.25;
+        --line-height-normal: 1.5;
+        --line-height-relaxed: 1.75;
+
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+        --spacing-3xl: 4rem;
+
+        /* Border Radius */
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-lg: 8px;
+        --radius-xl: 12px;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+        /* Transitions */
+        --transition-fast: 150ms ease;
+        --transition-normal: 300ms ease;
+        --transition-slow: 500ms ease;
+      }
+
+      /* Base Styles */
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        line-height: 1.6;
       }
 
       body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 0;
+        font-family: var(--font-family);
         color: var(--text-dark);
+        background-color: var(--background);
+        line-height: var(--line-height-normal);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Layout */
+      .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
+        padding: var(--spacing-xl) 0;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 var(--spacing-md);
       }
 
-      /* We'll add more styles as we go */
+      /* Typography */
+      h1, h2, h3, h4, h5, h6 {
+        line-height: var(--line-height-tight);
+        font-weight: 600;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-dark);
+      }
+
+      h1 {
+        font-size: var(--font-size-4xl);
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      h2 {
+        font-size: var(--font-size-3xl);
+        color: var(--secondary-color);
+      }
+
+      h3 {
+        font-size: var(--font-size-2xl);
+      }
+
+      h4 {
+        font-size: var(--font-size-xl);
+      }
+
+      h5 {
+        font-size: var(--font-size-lg);
+      }
+
+      h6 {
+        font-size: var(--font-size-base);
+      }
+
+      p {
+        margin-bottom: var(--spacing-md);
+        line-height: var(--line-height-normal);
+      }
+
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      /* Lists */
+      ul, ol {
+        margin-bottom: var(--spacing-md);
+        padding-left: var(--spacing-lg);
+      }
+
+      li {
+        margin-bottom: var(--spacing-xs);
+      }
+
+      /* Images */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-base);
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        line-height: 1.5;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-secondary {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background-color: #45a049;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Cards */
+      .card {
+        background: white;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        border: 1px solid var(--border);
+        transition: box-shadow var(--transition-fast);
+      }
+
+      .card:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      /* Utility Classes */
+      .text-center { text-align: center; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+
+      .text-primary { color: var(--primary-color); }
+      .text-secondary { color: var(--secondary-color); }
+      .text-accent { color: var(--accent-color); }
+      .text-muted { color: var(--text-muted); }
+
+      .mb-0 { margin-bottom: 0; }
+      .mb-sm { margin-bottom: var(--spacing-sm); }
+      .mb-md { margin-bottom: var(--spacing-md); }
+      .mb-lg { margin-bottom: var(--spacing-lg); }
+      .mb-xl { margin-bottom: var(--spacing-xl); }
+
+      .mt-0 { margin-top: 0; }
+      .mt-sm { margin-top: var(--spacing-sm); }
+      .mt-md { margin-top: var(--spacing-md); }
+      .mt-lg { margin-top: var(--spacing-lg); }
+      .mt-xl { margin-top: var(--spacing-xl); }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        :root {
+          --font-size-4xl: 1.875rem;
+          --font-size-3xl: 1.5rem;
+          --font-size-2xl: 1.25rem;
+        }
+
+        .container {
+          padding: 0 var(--spacing-sm);
+        }
+
+        main {
+          padding: var(--spacing-md) 0;
+        }
+
+        h1, h2, h3 {
+          margin-bottom: var(--spacing-sm);
+        }
+      }
+
+      @media (max-width: 480px) {
+        :root {
+          --font-size-4xl: 1.5rem;
+          --font-size-3xl: 1.25rem;
+        }
+      }
+
+      /* Focus styles for accessibility */
+      *:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+
+      /* Skip link for accessibility */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 9999;
+        border-radius: var(--radius-sm);
+      }
+
+      .skip-link:focus {
+        top: 6px;
+      }
+
+      /* Print styles */
+      @media print {
+        .main-navigation,
+        .site-footer,
+        .btn {
+          display: none !important;
+        }
+
+        body {
+          font-size: 12pt;
+          line-height: 1.4;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          page-break-after: avoid;
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <nav class="container">
-        <!-- We'll build out your navigation here -->
-        <a href="/">Earwax Clinic Network</a>
-        <ul>
-          <li><a href="/treatments/">Treatments</a></li>
-          <li><a href="/earwax-clinic-locations/">Find a Clinic</a></li>
-          <li><a href="/ear-wax-faq/">FAQ</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="page-wrapper">
+      <!-- Skip link for accessibility -->
+      <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div class="container">
-      <slot />
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Main Content -->
+      <main id="main-content">
+        <div class="container">
+          <slot />
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <Footer />
     </div>
-
-    <footer>
-      <div class="container">
-        <p>&copy; 2024 Earwax Clinic Network. Professional ear care across the UK.</p>
-      </div>
-    </footer>
   </body>
 </html>

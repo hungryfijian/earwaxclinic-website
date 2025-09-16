@@ -1,0 +1,596 @@
+---
+export interface Props {
+  services: Array<{
+    name: string;
+    price: string;
+    duration: string;
+    description: string;
+  }>;
+  clinicName: string;
+  bookingUrl?: string;
+}
+
+const { services, clinicName, bookingUrl } = Astro.props;
+
+// Service icons mapping
+const serviceIcons: Record<string, string> = {
+  'microsuction': '🔬',
+  'irrigation': '💧',
+  'hearing': '👂',
+  'assessment': '📋',
+  'consultation': '🩺',
+  'examination': '🔍',
+  'express': '⚡',
+  'comprehensive': '📊',
+  'tinnitus': '🎵'
+};
+
+// Function to get icon for service
+function getServiceIcon(serviceName: string): string {
+  const name = serviceName.toLowerCase();
+  for (const [key, icon] of Object.entries(serviceIcons)) {
+    if (name.includes(key)) {
+      return icon;
+    }
+  }
+  return '🏥'; // Default medical icon
+}
+---
+
+<section class="clinic-services">
+  <div class="container">
+    <div class="services-header">
+      <h2 class="services-title">Services Available at {clinicName}</h2>
+      <p class="services-description">
+        Professional ear care treatments provided by qualified specialists using the latest equipment and techniques.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <div class="service-card__header">
+            <div class="service-icon">
+              {getServiceIcon(service.name)}
+            </div>
+            <div class="service-title-price">
+              <h3 class="service-name">{service.name}</h3>
+              <div class="service-price">{service.price}</div>
+            </div>
+          </div>
+
+          <div class="service-card__content">
+            <div class="service-duration">
+              <span class="duration-icon">⏱️</span>
+              <span class="duration-text">{service.duration}</span>
+            </div>
+
+            <p class="service-description">{service.description}</p>
+
+            <div class="service-features">
+              <ul class="features-list">
+                {service.name.toLowerCase().includes('microsuction') && (
+                  <>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      No water used - completely dry procedure
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Safe for hearing aids and sensitive ears
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Immediate results with clear view
+                    </li>
+                  </>
+                )}
+
+                {service.name.toLowerCase().includes('irrigation') && (
+                  <>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Gentle water-based cleaning
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Quick and effective treatment
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Suitable for routine ear care
+                    </li>
+                  </>
+                )}
+
+                {service.name.toLowerCase().includes('hearing') && (
+                  <>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Comprehensive hearing evaluation
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Professional audiometry testing
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Detailed written report provided
+                    </li>
+                  </>
+                )}
+
+                {service.name.toLowerCase().includes('tinnitus') && (
+                  <>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Specialist tinnitus assessment
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Management strategies provided
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Ongoing support and advice
+                    </li>
+                  </>
+                )}
+
+                {!['microsuction', 'irrigation', 'hearing', 'tinnitus'].some(keyword =>
+                  service.name.toLowerCase().includes(keyword)) && (
+                  <>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Professional medical assessment
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Qualified practitioner consultation
+                    </li>
+                    <li class="feature-item">
+                      <span class="feature-check">✓</span>
+                      Detailed examination and advice
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </div>
+
+          <div class="service-card__actions">
+            {bookingUrl ? (
+              <a
+                href={bookingUrl}
+                class="btn-book-service"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book {service.name}
+              </a>
+            ) : (
+              <button class="btn-book-service" disabled>
+                Call to Book
+              </button>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="services-footer">
+      <div class="services-guarantee">
+        <h3 class="guarantee-title">Our Service Guarantee</h3>
+        <div class="guarantee-grid">
+          <div class="guarantee-item">
+            <div class="guarantee-icon">🛡️</div>
+            <h4 class="guarantee-heading">Safe & Sterile</h4>
+            <p class="guarantee-text">All equipment sterilized to medical standards</p>
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-icon">👨‍⚕️</div>
+            <h4 class="guarantee-heading">Qualified Professionals</h4>
+            <p class="guarantee-text">HCPC registered practitioners only</p>
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-icon">⚡</div>
+            <h4 class="guarantee-heading">Same Day Service</h4>
+            <p class="guarantee-text">Often available for immediate treatment</p>
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-icon">💯</div>
+            <h4 class="guarantee-heading">Satisfaction Promise</h4>
+            <p class="guarantee-text">Your comfort and results guaranteed</p>
+          </div>
+        </div>
+      </div>
+
+      {bookingUrl && (
+        <div class="services-cta">
+          <h3 class="cta-title">Ready to Book Your Appointment?</h3>
+          <p class="cta-description">Choose your preferred service and book online in just a few clicks.</p>
+          <a
+            href={bookingUrl}
+            class="btn-book-all-services"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book Any Service Online
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .clinic-services {
+    padding: var(--spacing-4xl) 0;
+    background: var(--background-light);
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .services-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-4xl);
+  }
+
+  .service-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+  }
+
+  .service-card__header {
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  .service-icon {
+    font-size: var(--font-size-3xl);
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .service-title-price {
+    flex: 1;
+  }
+
+  .service-name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    margin: 0 0 var(--spacing-xs) 0;
+    line-height: var(--line-height-tight);
+  }
+
+  .service-price {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .service-card__content {
+    padding: var(--spacing-xl);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .service-duration {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--background-light);
+    border-radius: var(--radius-full);
+    align-self: flex-start;
+  }
+
+  .duration-icon {
+    font-size: var(--font-size-sm);
+  }
+
+  .duration-text {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-dark);
+  }
+
+  .service-description {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .service-features {
+    flex: 1;
+  }
+
+  .features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-dark);
+  }
+
+  .feature-check {
+    color: var(--accent-color);
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .service-card__actions {
+    padding: var(--spacing-xl);
+    padding-top: 0;
+  }
+
+  .btn-book-service {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .btn-book-service:hover:not(:disabled) {
+    background: #45a049;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-book-service:disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Services Footer */
+  .services-footer {
+    border-top: 1px solid var(--border);
+    padding-top: var(--spacing-3xl);
+  }
+
+  .services-guarantee {
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .guarantee-title {
+    text-align: center;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .guarantee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .guarantee-item {
+    text-align: center;
+    padding: var(--spacing-lg);
+  }
+
+  .guarantee-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .guarantee-heading {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-dark);
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  .guarantee-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin: 0;
+    line-height: var(--line-height-normal);
+  }
+
+  .services-cta {
+    text-align: center;
+    background: white;
+    padding: var(--spacing-3xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cta-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-book-all-services {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-book-all-services:hover {
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-arrow {
+    font-weight: normal;
+    transition: transform var(--transition-fast);
+  }
+
+  .btn-book-all-services:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .clinic-services {
+      padding: var(--spacing-3xl) 0;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .service-card__header {
+      padding: var(--spacing-lg);
+      flex-direction: column;
+      text-align: center;
+      gap: var(--spacing-md);
+    }
+
+    .service-card__content {
+      padding: var(--spacing-lg);
+    }
+
+    .service-card__actions {
+      padding: var(--spacing-lg);
+      padding-top: 0;
+    }
+
+    .guarantee-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .guarantee-item {
+      padding: var(--spacing-md);
+    }
+
+    .services-cta {
+      padding: var(--spacing-xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-header {
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .services-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .services-description {
+      font-size: var(--font-size-base);
+    }
+
+    .service-name {
+      font-size: var(--font-size-lg);
+    }
+
+    .service-price {
+      font-size: var(--font-size-xl);
+    }
+
+    .guarantee-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-title {
+      font-size: var(--font-size-xl);
+    }
+
+    .cta-description {
+      font-size: var(--font-size-base);
+    }
+  }
+
+  /* Focus styles for accessibility */
+  .btn-book-service:focus,
+  .btn-book-all-services:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+</style>

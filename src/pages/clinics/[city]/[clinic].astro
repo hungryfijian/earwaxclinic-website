@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const { city, clinic } = Astro.params;
+const pageTitle = `${clinic} Ear Wax Removal - ${city} | Professional Ear Care`;
+const pageDescription = `Professional ear wax removal services at ${clinic} in ${city}. Expert microsuction and irrigation treatments.`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main>
+    <h1>{clinic} - Ear Wax Removal Specialist</h1>
+    <h2>Located in {city}</h2>
+
+    <div class="clinic-info">
+      <p>Content will be dynamically generated for this specific clinic.</p>
+
+      <div class="clinic-services">
+        <h3>Services Available</h3>
+        <ul>
+          <li>Microsuction Ear Wax Removal</li>
+          <li>Ear Irrigation</li>
+          <li>Hearing Assessments</li>
+          <li>Ear Health Consultations</li>
+        </ul>
+      </div>
+
+      <div class="clinic-contact">
+        <h3>Contact Information</h3>
+        <p>Phone number and appointment details will be displayed here.</p>
+      </div>
+
+      <div class="clinic-location">
+        <h3>Location & Directions</h3>
+        <p>Address and map will be displayed here.</p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,163 @@
+---
+export interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  external?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  external = false,
+  class: className = ''
+} = Astro.props;
+
+const baseClasses = 'cta-button';
+const variantClass = `cta-${variant}`;
+const sizeClass = `cta-${size}`;
+const classes = [baseClasses, variantClass, sizeClass, className].filter(Boolean).join(' ');
+---
+
+<a
+  href={href}
+  class={classes}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <slot />
+  {external && <span class="external-icon">↗</span>}
+</a>
+
+<style>
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-align: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* Variants */
+  .cta-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+
+  .cta-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-secondary {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+  }
+
+  .cta-secondary:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .cta-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Sizes */
+  .cta-sm {
+    padding: 0.5rem 1rem;
+    font-size: var(--font-size-sm);
+  }
+
+  .cta-md {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--font-size-base);
+  }
+
+  .cta-lg {
+    padding: 1rem 2rem;
+    font-size: var(--font-size-lg);
+  }
+
+  /* External link icon */
+  .external-icon {
+    font-size: 0.8em;
+    opacity: 0.8;
+  }
+
+  /* Focus styles */
+  .cta-button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
+  /* Loading state (can be added via class) */
+  .cta-button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .cta-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Full width option */
+  .cta-button.full-width {
+    width: 100%;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .cta-lg {
+      padding: 0.875rem 1.75rem;
+      font-size: var(--font-size-base);
+    }
+
+    .cta-md {
+      padding: 0.625rem 1.25rem;
+      font-size: var(--font-size-sm);
+    }
+  }
+</style>
