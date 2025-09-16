@@ -1,0 +1,72 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Your existing analytics, fonts, etc. will go here -->
+
+    <style>
+      /* Global styles - matching your brand colors */
+      :root {
+        --primary-color: #00796B;
+        --secondary-color: #004D40;
+        --accent-color: #4CAF50;
+        --warning-color: #FF6B35;
+        --text-dark: #212121;
+        --text-light: #757575;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-dark);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* We'll add more styles as we go */
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <!-- We'll build out your navigation here -->
+        <a href="/">Earwax Clinic Network</a>
+        <ul>
+          <li><a href="/treatments/">Treatments</a></li>
+          <li><a href="/earwax-clinic-locations/">Find a Clinic</a></li>
+          <li><a href="/ear-wax-faq/">FAQ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <slot />
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Earwax Clinic Network. Professional ear care across the UK.</p>
+      </div>
+    </footer>
+  </body>
+</html>
