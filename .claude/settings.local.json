@@ -9,7 +9,8 @@
       "Read(//d/EWC Map/**)",
       "Bash(lsof:*)",
       "Bash(cat:*)",
-      "Bash(tasklist)"
+      "Bash(tasklist)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []

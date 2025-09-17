@@ -1,44 +1,182 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "Find Ear Wax Removal Clinics Near You - UK Locations | Earwax Clinic Network";
-const pageDescription = "Interactive map of professional ear wax removal clinics across the UK. Find qualified microsuction and irrigation services near you with instant booking.";
+const pageTitle = "Find Relief Today - Professional Ear Wax Removal Clinics Near You | Earwax Clinic Network";
+const pageDescription = "Stop suffering with blocked ears. Interactive map of professional ear wax removal clinics across the UK. Same-day appointments available with qualified practitioners.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main>
+    <!-- Pre-Map Prime Section -->
     <div class="hero-section">
       <div class="container">
-        <h1>Find Your Nearest Clinic</h1>
-        <p class="lead">
-          Professional ear wax removal services across the UK. Safe, effective treatment by qualified practitioners.
-        </p>
+        <h1>🎯 Find Your Relief in 3 Simple Steps</h1>
+        <div class="journey-steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <p>Click Your Area Below</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <p>Call the Direct Number</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <p>Book Same-Day Relief</p>
+          </div>
+        </div>
+        <p class="urgency-note">⚠️ Most clinics below have same-day appointments available - but they fill up fast</p>
       </div>
     </div>
 
+    <!-- Pre-Map Conversion Content -->
     <div class="container">
-      <!-- Interactive Clinic Map -->
-      <div id="map-container" style="width: 100%; height: 600px; border: 2px solid #00796B; border-radius: 10px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <div class="pre-map-section">
+        <h2>🗺️ Your Local Relief Network</h2>
+        <p class="large-text">Each pin below represents a qualified practitioner ready to clear your blocked ears today. <strong>Click your area and call the number directly</strong> - no waiting, no referrals needed.</p>
+
+        <div class="social-proof-mini">
+          <p>⭐ <strong>"Found a clinic 5 minutes from home. Fantastic service!"</strong> - Janet, Lytham</p>
+        </div>
+
+        <div class="map-instructions">
+          <h3>📍 How to Use This Map:</h3>
+          <ul>
+            <li><strong>Click on any pin</strong> in your area</li>
+            <li><strong>You'll see the clinic's direct phone number</strong></li>
+            <li><strong>Call that number immediately</strong> to book</li>
+            <li>Most have same-day appointments available</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- The Exact iframe Embed -->
+      <div class="map-container">
         <iframe
           src="https://earwax-clinic-map.netlify.app/"
           width="100%"
-          height="100%"
-          style="border: none;"
-          title="Interactive Ear Wax Removal Clinic Map - Find Practitioners Near You"
-          loading="lazy"
-          allowfullscreen>
+          height="600"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
         </iframe>
       </div>
 
-      <div style="background: #f8f9fa; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-        <h2 style="color: #00796B; text-align: center; margin-bottom: 2rem;">Contact Information</h2>
-        <div style="text-align: center;">
-          <p style="font-size: 1.2rem; margin-bottom: 1rem;">For immediate assistance or to book an appointment:</p>
-          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <a href="tel:08003317002" style="background: #4CAF50; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 6px; font-weight: bold;">📞 Call 0800 331 7002</a>
-            <a href="/treatments/" style="background: #00796B; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 6px; font-weight: bold;">📋 View Services</a>
+      <!-- Post-Map Conversion Elements -->
+      <div class="post-map-section">
+        <div class="conversion-box urgent">
+          <h3>⏰ Don't Let Another Day Pass in Discomfort</h3>
+          <p>You've found your local clinic above. <strong>The hardest part is over.</strong></p>
+          <p class="bold">Every hour you wait is another hour of:</p>
+          <ul>
+            <li>❌ Muffled conversations with loved ones</li>
+            <li>❌ Missing important sounds around you</li>
+            <li>❌ That constant "underwater" feeling</li>
+            <li>❌ Potential wax becoming MORE impacted</li>
+          </ul>
+          <div class="cta-box">
+            <p class="cta-text">🎯 <strong>Take action now:</strong> Scroll back up → Click your area → Call the number</p>
           </div>
         </div>
+
+        <div class="value-stack">
+          <h3>✅ What Happens When You Call:</h3>
+          <div class="value-items">
+            <div class="value-item">
+              <span class="checkmark">✓</span>
+              <div>
+                <strong>Instant booking</strong> - Most have same-day appointments
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="checkmark">✓</span>
+              <div>
+                <strong>Professional consultation</strong> - Qualified, registered practitioners
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="checkmark">✓</span>
+              <div>
+                <strong>Safe microsuction</strong> - No messy syringing, no weeks of oil drops
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="checkmark">✓</span>
+              <div>
+                <strong>Video evidence</strong> - See your ears before and after
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="checkmark">✓</span>
+              <div>
+                <strong>Individual clinic pricing</strong> - Competitive rates, worth every penny
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-proof-section">
+          <h3>💬 What Patients Say After Their Appointment:</h3>
+          <div class="testimonial-grid">
+            <div class="testimonial">
+              <p><strong>"I can hear again!"</strong></p>
+              <p>"Fantastic service, best money I ever spent. Very professional - will tell all my family and friends about this clinic."</p>
+              <cite>- Janet, Lytham</cite>
+            </div>
+            <div class="testimonial">
+              <p><strong>"5 minutes from my home"</strong></p>
+              <p>"Chose this clinic because my doctors no longer offer this service. This clinic was 5 mins from my home. Very professional, will use again."</p>
+              <cite>- Janet, Lytham</cite>
+            </div>
+          </div>
+        </div>
+
+        <div class="final-push">
+          <h3>🏥 Why These Clinics vs. NHS/GP:</h3>
+          <div class="comparison">
+            <div class="nhs-column">
+              <h4>NHS/GP Route:</h4>
+              <ul>
+                <li>❌ Long waiting times</li>
+                <li>❌ Many no longer offer ear syringing</li>
+                <li>❌ Potential for unsafe syringing</li>
+                <li>❌ Limited appointment slots</li>
+              </ul>
+            </div>
+            <div class="private-column">
+              <h4>Private Clinic (Our Network):</h4>
+              <ul>
+                <li>✅ Same-day appointments</li>
+                <li>✅ Safe microsuction technique</li>
+                <li>✅ Qualified, registered professionals</li>
+                <li>✅ Direct contact, no referrals</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="emergency-contact">
+          <h3>📞 Need Help Finding Your Local Clinic?</h3>
+          <p>If you're having trouble with the map or need additional assistance:</p>
+          <div class="contact-button">
+            <a href="tel:01516620292" class="phone-cta">
+              📞 Call The Hearing Lab Store: 0151 662 0292
+            </a>
+          </div>
+          <p class="small-print">Our team can help direct you to your nearest clinic and answer any questions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+      <div class="sticky-content">
+        <span class="sticky-text">Ready for relief?</span>
+        <button onclick="window.scrollTo(0, document.querySelector('.map-container').offsetTop)" class="sticky-btn">
+          Find My Clinic
+        </button>
       </div>
     </div>
   </main>
@@ -48,19 +186,8 @@ const pageDescription = "Interactive map of professional ear wax removal clinics
   .hero-section {
     background: linear-gradient(135deg, #00796B 0%, #004D40 100%);
     color: white;
-    padding: 4rem 0 3rem;
+    padding: 3rem 0;
     text-align: center;
-  }
-
-  .hero-section h1 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .lead {
-    font-size: 1.2rem;
-    opacity: 0.9;
   }
 
   .container {
@@ -69,17 +196,350 @@ const pageDescription = "Interactive map of professional ear wax removal clinics
     padding: 0 1rem;
   }
 
+  .journey-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 150px;
+  }
+
+  .step-number {
+    display: block;
+    background: #4CAF50;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+    margin: 0 auto 0.5rem;
+    font-weight: bold;
+  }
+
+  .arrow {
+    font-size: 1.5rem;
+    color: #4CAF50;
+  }
+
+  .urgency-note {
+    background: rgba(255, 193, 7, 0.2);
+    padding: 0.8rem;
+    border-radius: 6px;
+    border-left: 4px solid #FFC107;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+
+  .pre-map-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+  }
+
+  .large-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-proof-mini {
+    background: #e8f5e8;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #4CAF50;
+    margin: 1.5rem 0;
+    font-style: italic;
+  }
+
+  .map-instructions {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #00796B;
+  }
+
+  .map-instructions ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .map-instructions li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .map-instructions li:last-child {
+    border-bottom: none;
+  }
+
+  .map-container {
+    margin: 3rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-map-section {
+    margin-top: 3rem;
+  }
+
+  .conversion-box {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+  }
+
+  .conversion-box.urgent {
+    background: #f8d7da;
+    border-color: #dc3545;
+  }
+
+  .conversion-box ul {
+    margin: 1rem 0;
+    padding-left: 1rem;
+  }
+
+  .cta-box {
+    background: #00796B;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .cta-text {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .value-stack {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #4CAF50;
+    margin: 2rem 0;
+  }
+
+  .value-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .checkmark {
+    background: #4CAF50;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .social-proof-section {
+    background: #e8f5e8;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .testimonial {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+  }
+
+  .testimonial cite {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+    color: #666;
+    margin-top: 1rem;
+  }
+
+  .final-push {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+  }
+
+  .comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .nhs-column, .private-column {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .nhs-column {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+  }
+
+  .private-column {
+    background: #d4edda;
+    border: 2px solid #28a745;
+  }
+
+  .emergency-contact {
+    background: #00796B;
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .contact-button {
+    margin: 1.5rem 0;
+  }
+
+  .phone-cta {
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+
+  .phone-cta:hover {
+    background: #45a049;
+  }
+
+  .small-print {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 1rem;
+  }
+
+  .mobile-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #00796B;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+  }
+
+  .sticky-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sticky-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  h1, h2, h3 {
+    color: inherit;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
   @media (max-width: 768px) {
+    .mobile-sticky-cta {
+      display: block;
+    }
+
     .hero-section {
-      padding: 3rem 0 2rem;
+      padding: 2rem 0;
     }
 
     .hero-section h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
-    #map-container {
-      height: 400px !important;
+    .journey-steps {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .arrow {
+      transform: rotate(90deg);
+    }
+
+    .step {
+      min-width: auto;
+      width: 100%;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .sticky-content {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    body {
+      padding-bottom: 80px;
     }
   }
 </style>
