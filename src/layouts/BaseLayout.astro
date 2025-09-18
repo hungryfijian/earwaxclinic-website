@@ -1,6 +1,7 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
@@ -62,8 +63,7 @@ const socialImage = image || '/images/og-default.jpg';
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <!-- CSS Stylesheets loaded via imports -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
