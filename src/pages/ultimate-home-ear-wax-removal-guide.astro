@@ -721,7 +721,7 @@ const pageDescription = "The complete guide to safe home ear wax removal. Step-b
 
 <style>
   :root {
-    --primary-color: #00796B;
+    --primary-color: var(--color-primary);
     --secondary-color: #004D4F;
     --accent-color: #26A69A;
     --text-dark: #2C3E50;
@@ -879,14 +879,14 @@ const pageDescription = "The complete guide to safe home ear wax removal. Step-b
     border-radius: var(--radius-lg);
     text-align: center;
     box-shadow: var(--shadow-sm);
-    border-left: 4px solid #ff9800;
+    border-left: 4px solid var(--color-warning);
   }
 
   .stat-number {
     display: block;
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
-    color: #ff9800;
+    color: var(--color-warning);
     margin-bottom: var(--spacing-sm);
   }
 
@@ -959,7 +959,7 @@ const pageDescription = "The complete guide to safe home ear wax removal. Step-b
   }
 
   .diy-reality {
-    border-left: 4px solid #ff9800;
+    border-left: 4px solid var(--color-warning);
   }
 
   .professional-reality {
@@ -967,7 +967,7 @@ const pageDescription = "The complete guide to safe home ear wax removal. Step-b
   }
 
   .diy-reality h3 {
-    color: #ff9800;
+    color: var(--color-warning);
     margin-bottom: var(--spacing-lg);
   }
 
@@ -999,12 +999,12 @@ const pageDescription = "The complete guide to safe home ear wax removal. Step-b
   }
 
   .diy-odds {
-    background: #fff3cd;
+    background: var(--color-warning-light);
     color: #b7791f;
   }
 
   .professional-odds {
-    background: #e8f5e8;
+    background: var(--color-success-light);
     color: var(--accent-color);
   }
 

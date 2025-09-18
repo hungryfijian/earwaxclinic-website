@@ -645,14 +645,14 @@ const pageDescription = "Advanced professional training for healthcare practitio
 
 <style>
   :root {
-    --primary-color: #00796B;
-    --secondary-color: #004D40;
-    --accent-color: #4CAF50;
+    --primary-color: var(--color-primary);
+    --secondary-color: var(--color-primary-dark);
+    --accent-color: var(--color-success);
     --text-color: #333;
     --light-bg: #f8f9fa;
     --border-color: #e0e0e0;
-    --success-color: #4CAF50;
-    --warning-color: #FF9800;
+    --success-color: var(--color-success);
+    --warning-color: var(--color-warning);
     --premium-gold: #FFB300;
   }
 
@@ -1322,7 +1322,7 @@ const pageDescription = "Advanced professional training for healthcare practitio
   }
 
   .btn-primary:hover {
-    background: #45a049;
+    background: var(--color-success-light);
     transform: translateY(-2px);
   }
 

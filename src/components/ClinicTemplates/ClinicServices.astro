@@ -226,8 +226,8 @@ function getServiceIcon(serviceName: string): string {
 
 <style>
   .clinic-services {
-    padding: var(--spacing-4xl) 0;
-    background: var(--background-light);
+    padding: var(--space-24) 0;
+    background: var(--color-bg-secondary);
   }
 
   .services-header {
@@ -239,10 +239,11 @@ function getServiceIcon(serviceName: string): string {
   }
 
   .services-title {
+    font-family: var(--font-display);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-6);
   }
 
   .services-description {
@@ -260,11 +261,11 @@ function getServiceIcon(serviceName: string): string {
   }
 
   .service-card {
-    background: white;
+    background: var(--color-bg-primary);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
-    transition: all var(--transition-normal);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -272,18 +273,18 @@ function getServiceIcon(serviceName: string): string {
   }
 
   .service-card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-medical);
     transform: translateY(-4px);
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
   }
 
   .service-card__header {
-    padding: var(--spacing-xl);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
+    padding: var(--space-8);
+    background: var(--gradient-medical);
+    color: var(--color-text-white);
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--space-6);
   }
 
   .service-icon {
@@ -297,10 +298,11 @@ function getServiceIcon(serviceName: string): string {
   }
 
   .service-name {
+    font-family: var(--font-display);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    color: white;
-    margin: 0 0 var(--spacing-xs) 0;
+    color: var(--color-text-white);
+    margin: 0 0 var(--space-1) 0;
     line-height: var(--line-height-tight);
   }
 
@@ -380,10 +382,10 @@ function getServiceIcon(serviceName: string): string {
 
   .btn-book-service {
     width: 100%;
-    padding: var(--spacing-md) var(--spacing-lg);
-    background: var(--accent-color);
-    color: white;
-    border: none;
+    padding: var(--space-4) var(--space-6);
+    background: var(--gradient-electric);
+    color: var(--color-text-white);
+    border: 2px solid var(--color-accent-bright);
     border-radius: var(--radius-md);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
@@ -392,14 +394,16 @@ function getServiceIcon(serviceName: string): string {
     text-align: center;
     transition: all var(--transition-fast);
     cursor: pointer;
+    box-shadow: var(--glow-sm);
   }
 
   .btn-book-service:hover:not(:disabled) {
-    background: #45a049;
-    color: white;
+    background: var(--gradient-vibrant);
+    color: var(--color-text-white);
     text-decoration: none;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-electric), var(--shadow-md);
+    border-color: var(--color-cyan);
   }
 
   .btn-book-service:disabled {
@@ -458,10 +462,11 @@ function getServiceIcon(serviceName: string): string {
 
   .services-cta {
     text-align: center;
-    background: white;
-    padding: var(--spacing-3xl);
+    background: var(--color-bg-primary);
+    padding: var(--space-16);
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-medical);
+    border: 2px solid var(--color-medical);
   }
 
   .cta-title {
@@ -483,24 +488,26 @@ function getServiceIcon(serviceName: string): string {
   .btn-book-all-services {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-lg) var(--spacing-2xl);
-    background: var(--primary-color);
-    color: white;
+    gap: var(--space-2);
+    padding: var(--space-6) var(--space-12);
+    background: var(--gradient-medical);
+    color: var(--color-text-white);
     text-decoration: none;
     border-radius: var(--radius-full);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     transition: all var(--transition-fast);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-medical);
+    border: 2px solid var(--color-medical);
   }
 
   .btn-book-all-services:hover {
-    background: var(--secondary-color);
-    color: white;
+    background: var(--gradient-trust);
+    color: var(--color-text-white);
     text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-trust), var(--glow-md);
+    border-color: var(--color-trust);
   }
 
   .btn-arrow {

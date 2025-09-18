@@ -153,11 +153,11 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
 
 <style>
   .clinic-card {
-    background: white;
+    background: var(--color-bg-primary);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border);
-    transition: all var(--transition-normal);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -166,23 +166,23 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
   }
 
   .clinic-card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-medical);
     transform: translateY(-2px);
-    border-color: var(--primary-color);
+    border-color: var(--color-primary);
   }
 
   .clinic-card--featured {
-    border: 2px solid var(--accent-color);
-    box-shadow: var(--shadow-md);
+    border: 2px solid var(--color-accent);
+    box-shadow: var(--shadow-medical);
   }
 
   .clinic-card__badge {
     position: absolute;
     top: 0;
     right: 0;
-    background: var(--accent-color);
-    color: white;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-accent);
+    color: var(--color-text-white);
+    padding: var(--space-1) var(--space-2);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     border-radius: 0 var(--radius-lg) 0 var(--radius-md);
@@ -256,17 +256,19 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--primary-color);
-    color: white;
+    background: var(--gradient-medical);
+    color: var(--color-text-white);
     border-radius: var(--radius-full);
     text-decoration: none;
     font-size: var(--font-size-lg);
     transition: all var(--transition-fast);
+    box-shadow: var(--shadow-medical);
   }
 
   .clinic-card__phone-quick:hover {
-    background: var(--secondary-color);
+    background: var(--gradient-trust);
     transform: scale(1.1);
+    box-shadow: var(--shadow-trust);
   }
 
   .clinic-card__content {
@@ -442,7 +444,7 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
   }
 
   .btn-book-online:hover {
-    background: #45a049;
+    background: var(--color-accent-hover);
   }
 
   /* Responsive design */
