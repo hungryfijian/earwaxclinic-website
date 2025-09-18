@@ -37,17 +37,17 @@ const { clinic, city, showDistance = false, distance } = Astro.props;
 const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
 ---
 
-<div class={`clinic-card ${clinic.featured ? 'clinic-card--featured' : ''}`}>
+<div class={`clinic-card ${clinic.featured ? 'clinic-card--featured' : ''} scroll-fade-in hover-lift will-animate`}>
   {clinic.featured && (
-    <div class="clinic-card__badge">
+    <div class="clinic-card__badge animate-zoomIn animate-trustPulse">
       <span>Recommended</span>
     </div>
   )}
 
   <div class="clinic-card__header">
     <div class="clinic-card__title-section">
-      <h3 class="clinic-card__name">
-        <a href={clinicUrl} class="clinic-card__name-link">
+      <h3 class="clinic-card__name animate-fadeInUp">
+        <a href={clinicUrl} class="clinic-card__name-link hover-glow">
           {clinic.name}
         </a>
       </h3>
@@ -70,7 +70,7 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
     <div class="clinic-card__contact-quick">
       <a
         href={`tel:${clinic.contact.phone}`}
-        class="clinic-card__phone-quick"
+        class="clinic-card__phone-quick animate-heartbeat hover-scale"
         title={`Call ${clinic.name}`}
       >
         📞
@@ -79,15 +79,15 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
   </div>
 
   <div class="clinic-card__content">
-    <div class="clinic-card__practitioner">
-      <h4 class="practitioner-name">{clinic.practitioner.name}</h4>
+    <div class="clinic-card__practitioner animate-slideInLeft">
+      <h4 class="practitioner-name animate-shimmer">{clinic.practitioner.name}</h4>
       <p class="practitioner-experience">{clinic.practitioner.experience} experience</p>
       <div class="practitioner-qualifications">
-        {clinic.practitioner.qualifications.slice(0, 2).map((qual) => (
-          <span class="qualification-badge">{qual}</span>
+        {clinic.practitioner.qualifications.slice(0, 2).map((qual, index) => (
+          <span class="qualification-badge professional-certification" style={`animation-delay: ${index * 0.1}s`}>{qual}</span>
         ))}
         {clinic.practitioner.qualifications.length > 2 && (
-          <span class="qualification-more">+{clinic.practitioner.qualifications.length - 2} more</span>
+          <span class="qualification-more animate-pulse">+{clinic.practitioner.qualifications.length - 2} more</span>
         )}
       </div>
     </div>
@@ -121,11 +121,11 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
     </div>
   </div>
 
-  <div class="clinic-card__actions">
+  <div class="clinic-card__actions animate-fadeInUp">
     <div class="clinic-card__contact">
       <a
         href={`tel:${clinic.contact.phone}`}
-        class="contact-phone"
+        class="contact-phone hover-electric animate-medicalBeep"
         title={`Call ${clinic.name}`}
       >
         {clinic.contact.phone}
@@ -136,14 +136,14 @@ const clinicUrl = `/clinics/${city.toLowerCase()}/${clinic.slug}/`;
       {clinic.bookingUrl ? (
         <a
           href={clinic.bookingUrl}
-          class="btn-book-online"
+          class="btn-book-online animate-electricFlow hover-glow"
           target="_blank"
           rel="noopener noreferrer"
         >
           Book Online
         </a>
       ) : (
-        <a href={clinicUrl} class="btn-view-details">
+        <a href={clinicUrl} class="btn-view-details hover-lift">
           View Details
         </a>
       )}
