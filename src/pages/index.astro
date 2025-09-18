@@ -253,8 +253,8 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
 
   /* Hero Section */
   .hero-section {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0f766e 100%);
-    color: white;
+    background: var(--gradient-hero);
+    color: var(--color-text-white);
     padding: 3rem 0 4rem;
     text-align: center;
     position: relative;
@@ -312,7 +312,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .highlight {
-    color: #fbbf24;
+    color: var(--color-warning);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   }
 
@@ -354,25 +354,25 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .btn-primary {
-    background: #16a34a;
-    color: white;
+    background: var(--color-success);
+    color: var(--color-text-white);
   }
 
   .btn-primary:hover {
-    background: #15803d;
+    background: var(--color-success);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(22, 163, 74, 0.3);
   }
 
   .btn-secondary {
     background: transparent;
-    color: #16a34a;
-    border: 2px solid #16a34a;
+    color: var(--color-success);
+    border: 2px solid var(--color-success);
   }
 
   .btn-secondary:hover {
-    background: #16a34a;
-    color: white;
+    background: var(--color-success);
+    color: var(--color-text-white);
   }
 
   .btn-large {
@@ -426,7 +426,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   /* Social Proof Section */
   .social-proof-section {
     padding: 4rem 0;
-    background: #f8fafc;
+    background: var(--color-bg-secondary);
   }
 
   .testimonial-showcase {
@@ -438,20 +438,20 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
     font-style: italic;
     max-width: 800px;
     margin: 0 auto 3rem;
-    color: #374151;
+    color: var(--color-text-primary);
     line-height: 1.6;
   }
 
   .main-testimonial cite {
     font-size: 1.1rem;
-    color: #6b7280;
+    color: var(--color-text-muted);
     margin-top: 1.5rem;
     display: block;
     font-style: normal;
   }
 
   .verified-badge {
-    color: #16a34a;
+    color: var(--color-success);
     font-weight: 600;
   }
 
@@ -474,32 +474,32 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1e40af;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
   }
 
   .stat-label {
     font-weight: 600;
-    color: #374151;
+    color: var(--color-text-primary);
   }
 
   /* Urgency Section */
   .urgency-section {
     padding: 4rem 0;
-    background: #fefbf3;
+    background: var(--color-bg-trust);
   }
 
   .section-title {
     text-align: center;
     font-size: 2.5rem;
-    color: #1e40af;
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
 
   .section-subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: #6b7280;
+    color: var(--color-text-muted);
     max-width: 600px;
     margin: 0 auto 3rem;
   }
@@ -517,7 +517,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #f59e0b;
+    border-left: 5px solid var(--color-warning);
   }
 
   .urgency-icon {
@@ -526,28 +526,28 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .urgency-card h3 {
-    color: #1e40af;
+    color: var(--color-primary);
     margin-bottom: 1rem;
     font-size: 1.3rem;
   }
 
   .urgency-card p {
-    color: #6b7280;
+    color: var(--color-text-muted);
     line-height: 1.6;
   }
 
   .permission-box {
-    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    background: var(--gradient-fresh-light);
     padding: 2.5rem;
     border-radius: 15px;
     text-align: center;
-    border: 2px solid #16a34a;
+    border: 2px solid var(--color-success);
     max-width: 600px;
     margin: 0 auto;
   }
 
   .permission-box h3 {
-    color: #16a34a;
+    color: var(--color-success);
     margin-bottom: 1rem;
   }
 
@@ -560,7 +560,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   .value-subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: #6b7280;
+    color: var(--color-text-muted);
     max-width: 700px;
     margin: 0 auto 3rem;
   }
@@ -573,7 +573,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .value-item {
-    background: #f8fafc;
+    background: var(--color-bg-secondary);
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
@@ -586,8 +586,8 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .value-item.highlighted {
-    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
-    border: 2px solid #3b82f6;
+    background: var(--gradient-trust-light);
+    border: 2px solid var(--color-primary);
   }
 
   .value-icon {
@@ -596,7 +596,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .value-item h3 {
-    color: #1e40af;
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
 
@@ -604,8 +604,8 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: #16a34a;
-    color: white;
+    background: var(--color-success);
+    color: var(--color-text-white);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -617,41 +617,41 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   }
 
   .comparison-box {
-    background: #f0fdf4;
+    background: var(--color-bg-trust);
     padding: 2.5rem;
     border-radius: 15px;
-    border: 2px solid #16a34a;
+    border: 2px solid var(--color-success);
     max-width: 600px;
     margin: 0 auto;
   }
 
   .old-price {
     text-decoration: line-through;
-    color: #6b7280;
+    color: var(--color-text-muted);
     font-size: 1.2rem;
   }
 
   .new-price {
     font-size: 2rem;
     font-weight: 700;
-    color: #16a34a;
+    color: var(--color-success);
   }
 
   .price-note {
     font-size: 1rem;
-    color: #6b7280;
+    color: var(--color-text-muted);
   }
 
   .value-justification {
     margin-top: 1rem;
     font-style: italic;
-    color: #6b7280;
+    color: var(--color-text-muted);
   }
 
   /* Trust Section */
   .trust-section {
     padding: 4rem 0;
-    background: #f8fafc;
+    background: var(--color-bg-secondary);
   }
 
   .certification-grid {
@@ -676,19 +676,19 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
   .cert-icon {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    color: #16a34a;
+    color: var(--color-success);
   }
 
   .cert-item h4 {
-    color: #1e40af;
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
 
   /* Final CTA Section */
   .final-cta-section {
     padding: 4rem 0;
-    background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
-    color: white;
+    background: var(--gradient-hero);
+    color: var(--color-text-white);
     text-align: center;
   }
 
@@ -742,7 +742,7 @@ const pageDescription = "Tired of muffled hearing and ear discomfort? Our qualif
 
   .sticky-text {
     font-weight: 600;
-    color: #374151;
+    color: var(--color-text-primary);
   }
 
   /* Responsive Design */

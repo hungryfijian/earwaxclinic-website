@@ -12,7 +12,10 @@
       "Bash(tasklist)",
       "Bash(sed:*)",
       "Bash(npm run build:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run preview:*)"
     ],
     "deny": [],
     "ask": []

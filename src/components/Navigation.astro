@@ -72,10 +72,20 @@ function isActive(href: string, pathname: string): boolean {
 <style>
   .main-navigation {
     background: var(--color-primary);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(5, 72, 140, 0.2);
+    border-bottom: 2px solid var(--color-accent-bright);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all var(--transition-base);
+  }
+
+  .main-navigation.scrolled {
+    background: rgba(5, 72, 140, 0.95);
+    box-shadow: 0 4px 20px rgba(5, 72, 140, 0.3);
+    border-bottom-color: var(--color-cyan);
   }
 
   .nav-container {
@@ -94,23 +104,31 @@ function isActive(href: string, pathname: string): boolean {
   }
 
   .brand-link {
-    color: white;
+    color: var(--color-text-white);
     text-decoration: none;
     display: flex;
     flex-direction: column;
     line-height: 1.2;
+    transition: all var(--transition-fast);
+  }
+
+  .brand-link:hover {
+    color: var(--color-accent-bright);
+    text-shadow: 0 0 8px rgba(3, 255, 255, 0.5);
   }
 
   .brand-text {
     font-size: 1.4rem;
     font-weight: 700;
     margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
 
   .brand-tagline {
     font-size: 0.75rem;
-    opacity: 0.9;
+    opacity: 0.95;
     font-weight: 400;
+    color: var(--color-accent-bright);
   }
 
   /* Mobile Menu Button */
@@ -289,11 +307,27 @@ function isActive(href: string, pathname: string): boolean {
 </style>
 
 <script>
-  // Mobile menu functionality
+  // Mobile menu and scroll functionality
   document.addEventListener('DOMContentLoaded', () => {
+    const navigation = document.querySelector('.main-navigation') as HTMLElement;
     const menuToggle = document.querySelector('[data-mobile-menu-toggle]') as HTMLButtonElement;
     const mobileMenu = document.querySelector('[data-mobile-menu]') as HTMLElement;
 
+    // Scroll detection for navigation styling
+    if (navigation) {
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          navigation.classList.add('scrolled');
+        } else {
+          navigation.classList.remove('scrolled');
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+    }
+
+    // Mobile menu functionality
     if (menuToggle && mobileMenu) {
       menuToggle.addEventListener('click', () => {
         const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
