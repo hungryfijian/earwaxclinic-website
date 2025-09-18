@@ -1,0 +1,433 @@
+/* ===============================================
+   EARWAX CLINIC NETWORK - UTILITIES
+   Medical Component Styles & Utility Classes
+   =============================================== */
+
+/* ============ TRUST BADGES ============ */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--gradient-trust-light);
+  border: 2px solid var(--color-trust);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-trust);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-badge:hover {
+  background: var(--gradient-trust);
+  color: var(--color-text-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-trust);
+}
+
+.trust-badge-verified {
+  background: var(--gradient-premium-light);
+  border-color: var(--color-premium);
+  color: var(--color-premium);
+}
+
+.trust-badge-verified:hover {
+  background: var(--gradient-premium);
+  color: var(--color-text-white);
+}
+
+.trust-badge-medical {
+  background: var(--gradient-medical-soft);
+  border-color: var(--color-medical);
+  color: var(--color-medical);
+}
+
+.trust-badge-medical:hover {
+  background: var(--gradient-medical);
+  color: var(--color-text-white);
+}
+
+/* ============ MEDICAL ICONS ============ */
+.medical-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  background: var(--gradient-medical-soft);
+  border: 2px solid var(--color-medical);
+  border-radius: var(--radius-xl);
+  color: var(--color-medical);
+  font-size: var(--font-size-2xl);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-medical);
+}
+
+.medical-icon:hover {
+  background: var(--gradient-medical);
+  color: var(--color-text-white);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.medical-icon-sm {
+  width: var(--space-8);
+  height: var(--space-8);
+  font-size: var(--font-size-lg);
+}
+
+.medical-icon-lg {
+  width: var(--space-16);
+  height: var(--space-16);
+  font-size: var(--font-size-4xl);
+}
+
+.medical-icon-trust {
+  background: var(--gradient-trust-light);
+  border-color: var(--color-trust);
+  color: var(--color-trust);
+}
+
+.medical-icon-trust:hover {
+  background: var(--gradient-trust);
+  color: var(--color-text-white);
+}
+
+.medical-icon-fresh {
+  background: var(--gradient-fresh-light);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.medical-icon-fresh:hover {
+  background: var(--gradient-fresh);
+  color: var(--color-text-white);
+}
+
+/* ============ HERO SECTIONS ============ */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--gradient-hero);
+  color: var(--color-text-white);
+  padding: var(--space-20) var(--space-4);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-lg);
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-6);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-8);
+  opacity: 0.95;
+}
+
+.hero-medical {
+  background: var(--gradient-hero-vibrant);
+}
+
+.hero-trust {
+  background: var(--gradient-premium);
+}
+
+.hero-fresh {
+  background: var(--gradient-fresh);
+}
+
+/* Hero responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ============ NAVIGATION STYLES ============ */
+.nav-medical {
+  background: var(--color-bg-primary);
+  border-bottom: 3px solid var(--color-medical);
+  box-shadow: var(--shadow-medical);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background: var(--color-bg-secondary);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  background: var(--gradient-medical-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-medical);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.nav-brand:hover {
+  color: var(--color-primary-hover);
+  transform: scale(1.02);
+}
+
+/* ============ SPACING UTILITIES ============ */
+.space-y-1 > * + * { margin-top: var(--space-1); }
+.space-y-2 > * + * { margin-top: var(--space-2); }
+.space-y-3 > * + * { margin-top: var(--space-3); }
+.space-y-4 > * + * { margin-top: var(--space-4); }
+.space-y-6 > * + * { margin-top: var(--space-6); }
+.space-y-8 > * + * { margin-top: var(--space-8); }
+.space-y-12 > * + * { margin-top: var(--space-12); }
+
+.space-x-1 > * + * { margin-left: var(--space-1); }
+.space-x-2 > * + * { margin-left: var(--space-2); }
+.space-x-3 > * + * { margin-left: var(--space-3); }
+.space-x-4 > * + * { margin-left: var(--space-4); }
+.space-x-6 > * + * { margin-left: var(--space-6); }
+.space-x-8 > * + * { margin-left: var(--space-8); }
+
+/* ============ ALIGNMENT UTILITIES ============ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+
+.justify-center { justify-content: center; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+
+/* ============ MEDICAL-SPECIFIC UTILITIES ============ */
+.medical-highlight {
+  background: var(--gradient-medical-soft);
+  border-left: 4px solid var(--color-medical);
+  padding: var(--space-4) var(--space-6);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: var(--space-4) 0;
+}
+
+.trust-highlight {
+  background: var(--gradient-trust-light);
+  border-left: 4px solid var(--color-trust);
+  padding: var(--space-4) var(--space-6);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: var(--space-4) 0;
+}
+
+.fresh-highlight {
+  background: var(--gradient-fresh-light);
+  border-left: 4px solid var(--color-secondary);
+  padding: var(--space-4) var(--space-6);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: var(--space-4) 0;
+}
+
+/* ============ PROFESSIONAL BADGES ============ */
+.professional-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: var(--gradient-premium-light);
+  border: 1px solid var(--color-premium);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-premium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-sm);
+}
+
+.professional-badge-verified {
+  background: var(--gradient-medical-soft);
+  border-color: var(--color-medical);
+  color: var(--color-medical);
+}
+
+.professional-badge-certified {
+  background: var(--gradient-trust-light);
+  border-color: var(--color-trust);
+  color: var(--color-trust);
+}
+
+/* ============ CALL-TO-ACTION SECTIONS ============ */
+.cta-section {
+  background: var(--gradient-hero-light);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12) var(--space-8);
+  margin: var(--space-12) 0;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-medical {
+  background: var(--gradient-medical-soft);
+  border-color: var(--color-medical);
+}
+
+.cta-trust {
+  background: var(--gradient-trust-light);
+  border-color: var(--color-trust);
+}
+
+.cta-fresh {
+  background: var(--gradient-fresh-light);
+  border-color: var(--color-secondary);
+}
+
+/* ============ GLOW EFFECTS ============ */
+.glow-medical {
+  box-shadow: var(--glow-lg);
+  transition: box-shadow var(--transition-base);
+}
+
+.glow-medical:hover {
+  box-shadow: var(--glow-lg), var(--shadow-xl);
+}
+
+.glow-electric {
+  box-shadow: var(--glow-electric);
+  transition: box-shadow var(--transition-base);
+}
+
+.glow-electric:hover {
+  box-shadow: var(--glow-electric), var(--shadow-xl);
+}
+
+/* ============ ACCESSIBILITY UTILITIES ============ */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.reduced-motion {
+  transition: none !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============ RESPONSIVE UTILITIES ============ */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* ============ PRINT UTILITIES ============ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
